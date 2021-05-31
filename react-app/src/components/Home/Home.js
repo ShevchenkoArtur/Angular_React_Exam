@@ -2,7 +2,10 @@ import React from "react"
 
 const Home = props => {
     return (
-        <div>home</div>
+        <div>
+            О проекте
+            <p></p>
+        </div>
     )
 }
 
