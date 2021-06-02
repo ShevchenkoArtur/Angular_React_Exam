@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './form.module.css'
 
 const AddCar = props => {
 
@@ -12,7 +13,7 @@ const AddCar = props => {
     }
 
     return (
-        <form onSubmit={formSubmit}>
+        <form onSubmit={formSubmit} className={style.form}>
             <label>Брэнд:
                 <input type="text"
                        value={props.inputInfo.value.brand}
@@ -28,21 +29,23 @@ const AddCar = props => {
                 />
             </label>
             <label>Год выпуска:
-                <input type="text"
+                <input type="number"
                        value={props.inputInfo.value.year}
                        name={props.inputInfo.name.year}
                        onChange={onUpdateValue}
                 />
             </label>
             <label>Цена:
-                <input type="text"
+                <input type="number"
                        value={props.inputInfo.value.price}
                        name={props.inputInfo.name.price}
                        onChange={onUpdateValue}
                 />
             </label>
-            <div>
-                <button type="submit">Добавить</button>
+            <div className={style.action}>
+                <button type="submit">
+                    Добавить
+                </button>
             </div>
         </form>
     )
