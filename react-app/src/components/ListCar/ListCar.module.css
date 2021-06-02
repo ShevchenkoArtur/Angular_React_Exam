@@ -1,0 +1,41 @@
+.list {
+    padding: 0 8px 0 8px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin: 0 0 16px 0;
+    background-color: #eee;
+    line-height: 1.8;
+}
+
+.info strong {
+    text-transform: uppercase;
+}
+
+.action button {
+    border: 0;
+    outline: none;
+    background-color: transparent;
+
+}
+
+.action button:last-child {
+    margin: 0 0 0 16px;
+}
+
+.action button img {
+    width: 30px;
+    height: 30px;
+    transition: 200ms;
+}
+
+.action button img:hover {
+    transform: scale(1.1);
+}
+

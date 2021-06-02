@@ -1,0 +1,39 @@
+.header {
+    min-width: 360px;
+    max-width: 1170px;
+    height: 80px;
+    margin: 0 0 24px 0;
+}
+
+.menu {
+    height: 80px;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+}
+
+.item {
+    margin: 0 16px 0 0;
+    height: 80px;
+}
+
+.item a {
+    text-decoration: none;
+    color: gray;
+    font-size: 18px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.item a:hover {
+    border-bottom: 2px solid blue;
+    color: black;
+}
+
+a.active {
+    color: black;
+    border-bottom: 2px solid blue;
+}
