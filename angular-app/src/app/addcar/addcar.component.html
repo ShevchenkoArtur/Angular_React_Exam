@@ -1,0 +1,19 @@
+<form class="form">
+  <label>Брэнд:
+    <input [(ngModel)]="inputs.brand" type="text" name="brand"/>
+  </label>
+  <label>Модель:
+    <input [(ngModel)]="inputs.model" type="text" name="model"/>
+  </label>
+  <label>Год выпуска:
+    <input [(ngModel)]="inputs.year" type="number" name="year"/>
+  </label>
+  <label>Цена:
+    <input [(ngModel)]="inputs.price" type="number" name="price"/>
+  </label>
+  <div class="action">
+    <button (click)="addCar()" type="button">
+      Добавить
+    </button>
+  </div>
+</form>
