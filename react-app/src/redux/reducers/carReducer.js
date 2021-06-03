@@ -27,7 +27,7 @@ const initialState = {
         isDelete: false,
         isEdit: false,
         isAdd: false
-    }
+    },
 }
 
 const carReducer = (state = initialState, action) => {
@@ -140,6 +140,5 @@ export const updateAddCarInputValues = (inputName, newValue) => {
 export const resetInput = () => ({type: RESET_INPUT})
 export const setDeleteToggle = bool => ({type: SET_DELETE_TOGGLE, bool})
 export const setAddToggle = bool => ({type: SET_ADD_TOGGLE, bool})
-
 
 export default carReducer

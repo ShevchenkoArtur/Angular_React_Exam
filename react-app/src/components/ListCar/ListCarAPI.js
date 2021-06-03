@@ -33,6 +33,7 @@ class ListCarAPI extends React.Component {
                         deleteCar={this.onDeleteCar}
                         notificationFlags={this.props.notificationFlags}
                         setDeleteToogle={this.props.setDeleteToggle}
+
         />
     }
 }

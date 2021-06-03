@@ -5,7 +5,8 @@ import {deleteCar, getCars, setDeleteToggle} from "../../redux/reducers/carReduc
 const mapStateToProps = state => {
     return {
         cars: state.carsCRUD.cars,
-        notificationFlags: state.carsCRUD.notificationFlags
+        notificationFlags: state.carsCRUD.notificationFlags,
+        editIsOpen: state.carsCRUD.editIsOpen
     }
 }
 
