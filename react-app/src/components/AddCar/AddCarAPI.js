@@ -10,18 +10,26 @@ class AddCarAPI extends React.Component {
     }
 
     onAddCar() {
-        axios.post('http://localhost:8080/api/cars', this.props.inputInfo.value)
-            .catch(error => {
-                console.log(error)
-            })
-
-        this.props.resetInput()
+        if (this.props.inputInfo.value.brand &&
+            this.props.inputInfo.value.model &&
+            this.props.inputInfo.value.year &&
+            this.props.inputInfo.value.price
+        ) {
+            axios.post('http://localhost:8080/api/cars', this.props.inputInfo.value)
+                .catch(error => {
+                    console.log(error)
+                })
+            this.props.resetInput()
+            this.props.setAddToggle(true)
+        }
     }
 
     render() {
         return <AddCar inputInfo={this.props.inputInfo}
                        updateInputValues={this.props.updateInputValues}
                        addCar={this.onAddCar}
+                       notificationFlags={this.props.notificationFlags}
+                       setAddToggle={this.props.setAddToggle}
         />
     }
 }

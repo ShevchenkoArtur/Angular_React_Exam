@@ -24,13 +24,15 @@ class ListCarAPI extends React.Component {
             .catch(error => {
                 console.log(error);
             })
-
         this.props.deleteCar(id)
+        this.props.setDeleteToggle(true)
     }
 
     render() {
         return <ListCar cars={this.props.cars}
                         deleteCar={this.onDeleteCar}
+                        notificationFlags={this.props.notificationFlags}
+                        setDeleteToogle={this.props.setDeleteToggle}
         />
     }
 }

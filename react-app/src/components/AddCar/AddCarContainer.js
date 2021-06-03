@@ -1,10 +1,11 @@
 import {connect} from "react-redux";
 import AddCarAPI from "./AddCarAPI";
-import {resetInput, updateAddCarInputValues} from "../../redux/reducers/carReducer";
+import {resetInput, setAddToggle, updateAddCarInputValues} from "../../redux/reducers/carReducer";
 
 const mapStateToProps = state => {
     return {
-        inputInfo: state.carsCRUD.addCarInputInfo
+        inputInfo: state.carsCRUD.addCarInputInfo,
+        notificationFlags: state.carsCRUD.notificationFlags
     }
 }
 
@@ -15,6 +16,9 @@ const mapDispatchToProps = dispatch => {
         },
         resetInput: () => {
             dispatch(resetInput())
+        },
+        setAddToggle: bool => {
+            dispatch(setAddToggle(bool))
         }
     }
 }

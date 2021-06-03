@@ -1,7 +1,10 @@
 import React from 'react'
 import style from './form.module.css'
+import Notification from "../Notification/Notification";
 
 const AddCar = props => {
+
+    const addMessage = 'Машина была добавлена!'
 
     const formSubmit = (e) => {
         e.preventDefault()
@@ -12,8 +15,16 @@ const AddCar = props => {
         props.updateInputValues(e.target.name, e.target.value)
     }
 
+    if (props.notificationFlags.isAdd) {
+        setTimeout(() => {
+            props.setAddToggle(false)
+        }, 2000)
+    }
     return (
         <form onSubmit={formSubmit} className={style.form}>
+            {
+                props.notificationFlags.isAdd ? <Notification message={addMessage}/> : ''
+            }
             <label>Брэнд:
                 <input type="text"
                        value={props.inputInfo.value.brand}

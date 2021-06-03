@@ -1,12 +1,14 @@
 import {connect} from "react-redux";
 import ListCarAPI from "./ListCarAPI";
-import {deleteCar, getCars} from "../../redux/reducers/carReducer";
+import {deleteCar, getCars, setDeleteToggle} from "../../redux/reducers/carReducer";
 
 const mapStateToProps = state => {
     return {
-      cars: state.carsCRUD.cars
+        cars: state.carsCRUD.cars,
+        notificationFlags: state.carsCRUD.notificationFlags
     }
 }
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -15,6 +17,9 @@ const mapDispatchToProps = dispatch => {
         },
         deleteCar: id => {
             dispatch(deleteCar(id))
+        },
+        setDeleteToggle: bool => {
+            dispatch(setDeleteToggle(bool))
         }
     }
 }

@@ -2,6 +2,8 @@ const DELETE_CAR = 'DELETE_CAR'
 const GET_CARS = 'GET_CARS'
 const UPDATE_ADD_CAR_INPUT_VALUES = 'UPDATE_ADD_CAR_INPUT_VALUES'
 const RESET_INPUT = 'RESET_INPUT'
+const SET_DELETE_TOGGLE = 'SET_DELETE_TOGGLE'
+const SET_ADD_TOGGLE = 'SET_ADD_TOGGLE'
 
 const initialState = {
     cars: [],
@@ -19,6 +21,12 @@ const initialState = {
             year: 'addYear',
             price: 'addPrice'
         },
+    },
+
+    notificationFlags: {
+        isDelete: false,
+        isEdit: false,
+        isAdd: false
     }
 }
 
@@ -98,6 +106,20 @@ const carReducer = (state = initialState, action) => {
                 ...state,
                 cars: state.cars.filter(car => car.id !== action.id)
             }
+        case SET_DELETE_TOGGLE:
+            return {
+                ...state,
+                notificationFlags: {
+                    isDelete: action.bool
+                }
+            }
+        case SET_ADD_TOGGLE:
+            return {
+                ...state,
+                notificationFlags: {
+                    isAdd: action.bool
+                }
+            }
         default:
             return state
     }
@@ -116,5 +138,8 @@ export const updateAddCarInputValues = (inputName, newValue) => {
 }
 
 export const resetInput = () => ({type: RESET_INPUT})
+export const setDeleteToggle = bool => ({type: SET_DELETE_TOGGLE, bool})
+export const setAddToggle = bool => ({type: SET_ADD_TOGGLE, bool})
+
 
 export default carReducer
