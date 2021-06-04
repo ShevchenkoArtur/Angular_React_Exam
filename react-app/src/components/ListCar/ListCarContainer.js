@@ -4,16 +4,13 @@ import {
     deleteCar,
     getCars,
     setDeleteToggle,
-    setIdEditedCar,
-    setNavigateToEditToggle
+    setIdEditedCar
 } from "../../redux/reducers/carReducer";
 
 const mapStateToProps = state => {
     return {
         cars: state.carsCRUD.cars,
-        notificationFlags: state.carsCRUD.notificationFlags,
-        editIsOpen: state.carsCRUD.editIsOpen,
-        navigateToEdit: state.carsCRUD.navigateToEdit
+        notificationFlags: state.carsCRUD.notificationFlags
     }
 }
 
@@ -28,9 +25,6 @@ const mapDispatchToProps = dispatch => {
         },
         setDeleteToggle: bool => {
             dispatch(setDeleteToggle(bool))
-        },
-        setNavigateToEditToggle: bool => {
-            dispatch(setNavigateToEditToggle(bool))
         },
         setIdEditedCar: id => {
             dispatch(setIdEditedCar(id))

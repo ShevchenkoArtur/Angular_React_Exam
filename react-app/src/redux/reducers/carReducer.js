@@ -1,10 +1,10 @@
 const DELETE_CAR = 'DELETE_CAR'
 const GET_CARS = 'GET_CARS'
 const UPDATE_ADD_CAR_INPUT_VALUES = 'UPDATE_ADD_CAR_INPUT_VALUES'
+const UPDATE_EDIT_CAR_INPUT_VALUES = 'UPDATE_EDIT_CAR_INPUT_VALUES'
 const RESET_INPUTS = 'RESET_INPUTS'
 const SET_DELETE_TOGGLE = 'SET_DELETE_TOGGLE'
 const SET_ADD_TOGGLE = 'SET_ADD_TOGGLE'
-const SET_NAVIGATE_TO_EDIT_TOGGLE = 'SET_NAVIGATE_TO_EDIT_TOGGLE'
 const SET_EDITED_CAR_ID = 'SET_EDITED_CAR_ID'
 
 
@@ -31,8 +31,6 @@ const initialState = {
         isEdit: false,
         isAdd: false
     },
-
-    navigateToEdit: false,
 
     editedCarId: null
 }
@@ -94,6 +92,43 @@ const carReducer = (state = initialState, action) => {
                 default:
                     return state;
             }
+        case UPDATE_EDIT_CAR_INPUT_VALUES:
+            return {
+                ...state,
+                cars: state.cars.filter(car => car.id === state.editedCarId).map(car => {
+                    return {
+                        ...car,
+                        model: action.newValue,
+                        price: action.newValue,
+                        brand: action.newValue,
+                        year: action.newValue
+                    }
+                    // switch (action.inputName) {
+                    //     case state.addCarInputInfo.name.year:
+                    //         return {
+                    //             ...car,
+                    //             year: action.newValue
+                    //         }
+                    //     case state.addCarInputInfo.name.model:
+                    //         return {
+                    //             ...car,
+                    //             model: action.newValue
+                    //         }
+                    //     case state.addCarInputInfo.name.brand:
+                    //         return {
+                    //             ...car,
+                    //             brand: action.newValue
+                    //         }
+                    //     case state.addCarInputInfo.name.price:
+                    //         return {
+                    //             ...car,
+                    //             price: action.newValue
+                    //         }
+                    //     default:
+                    //         return car
+                    // }
+                })
+            }
         case RESET_INPUTS:
             return {
                 ...state,
@@ -127,11 +162,6 @@ const carReducer = (state = initialState, action) => {
                     isAdd: action.bool
                 }
             }
-        case SET_NAVIGATE_TO_EDIT_TOGGLE:
-            return {
-                ...state,
-                navigateToEdit: action.bool
-            }
         case SET_EDITED_CAR_ID:
             return {
                 ...state,
@@ -154,10 +184,21 @@ export const updateAddCarInputValues = (inputName, newValue) => {
     }
 }
 
+export const updateEditCarInputValues = (inputName, newValue) => {
+    return {
+        type: UPDATE_EDIT_CAR_INPUT_VALUES,
+        inputName,
+        newValue
+    }
+}
+
 export const resetInputs = () => ({type: RESET_INPUTS})
+
 export const setDeleteToggle = bool => ({type: SET_DELETE_TOGGLE, bool})
+
 export const setAddToggle = bool => ({type: SET_ADD_TOGGLE, bool})
-export const setNavigateToEditToggle = bool => ({type: SET_NAVIGATE_TO_EDIT_TOGGLE, bool})
+
 export const setIdEditedCar = id => ({type: SET_EDITED_CAR_ID, id})
+
 
 export default carReducer

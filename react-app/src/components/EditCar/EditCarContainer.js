@@ -1,11 +1,13 @@
 import {connect} from "react-redux";
 import EditCarAPI from "./EditCarAPI";
-import {setNavigateToEditToggle} from "../../redux/reducers/carReducer";
+import {
+    updateAddCarInputValues
+} from "../../redux/reducers/carReducer";
 
 
 const mapStateToProps = state => {
     return {
-        navigateToEdit: state.carsCRUD.navigateToEdit,
+        inputSettings: state.carsCRUD.addCarInputInfo,
         editedCarId: state.carsCRUD.editedCarId,
         cars: state.carsCRUD.cars
     }
@@ -13,8 +15,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setNavigateToEditToggle: (bool) => {
-            dispatch(setNavigateToEditToggle(bool))
+        updateInputValues: (inputName, newValue) => {
+            dispatch(updateAddCarInputValues(inputName, newValue))
         }
     }
 }

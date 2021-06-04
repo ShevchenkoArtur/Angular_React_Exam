@@ -3,7 +3,8 @@ import style from './ListCar.module.css'
 import deleteIcon from '../../assets/images/icons/deleteIcon.svg'
 import editIcon from '../../assets/images/icons/editIcon.svg'
 import Notification from "../Notification/Notification";
-import {Redirect} from "react-router-dom";
+import {Link, NavLink, Redirect} from "react-router-dom";
+
 
 const ListCar = props => {
 
@@ -20,9 +21,9 @@ const ListCar = props => {
     }
 
     const onEditCar = id => {
-        props.setNavigateToEditToggle(true)
         props.setIdEditedCar(id)
     }
+
 
     return (
         <ul className={style.list}>
@@ -32,31 +33,31 @@ const ListCar = props => {
             {
                 props.cars.length === 0 ? <div>Раздел пуст!</div> :
                     props.cars.map(car => {
-                        return (
-                            <li className={style.item} key={car.id}>
-                                <div className={style.info}>
-                                    <p><strong>{car.brand} {car.model}</strong></p>
-                                    <p>Цена: {car.price}</p>
-                                    <p>Год выпуска: {car.year}</p>
-                                </div>
+                            return (
+                                <li className={style.item} key={car.id}>
+                                    <div className={style.info}>
+                                        <p><strong>{car.brand} {car.model}</strong></p>
+                                        <p>Цена: {car.price}</p>
+                                        <p>Год выпуска: {car.year}</p>
+                                    </div>
 
-                                <div className={style.action}>
+                                    <div className={style.action}>
+                                        <NavLink to='/edit-car'>
+                                            edit
+                                            {/*onClick={() => onEditCar(car.id)}*/}
+                                            {/*<button >*/}
+                                            {/*    <img src={editIcon} alt="Edit" title="Edit"/>*/}
+                                            {/*</button>*/}
+                                        </NavLink>
 
-                                    <button onClick={() => onEditCar(car.id)}>
-                                        <img src={editIcon} alt="Edit" title="Edit"/>
-                                    </button>
-                                    {
-                                        props.navigateToEdit ? <Redirect to="/edit-car"/> : ''
-                                    }
-
-                                    <button onClick={() => onDeleteCar(car.id)}>
-                                        <img src={deleteIcon} alt="Delete" title="Delete"/>
-                                    </button>
-                                </div>
-                            </li>
-
-                        )
-                    })
+                                        <button onClick={() => onDeleteCar(car.id)}>
+                                            <img src={deleteIcon} alt="Delete" title="Delete"/>
+                                        </button>
+                                    </div>
+                                </li>
+                            )
+                        }
+                    )
             }
         </ul>
     )
