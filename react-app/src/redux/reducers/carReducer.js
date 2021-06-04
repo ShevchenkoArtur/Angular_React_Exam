@@ -1,9 +1,12 @@
 const DELETE_CAR = 'DELETE_CAR'
 const GET_CARS = 'GET_CARS'
 const UPDATE_ADD_CAR_INPUT_VALUES = 'UPDATE_ADD_CAR_INPUT_VALUES'
-const RESET_INPUT = 'RESET_INPUT'
+const RESET_INPUTS = 'RESET_INPUTS'
 const SET_DELETE_TOGGLE = 'SET_DELETE_TOGGLE'
 const SET_ADD_TOGGLE = 'SET_ADD_TOGGLE'
+const SET_NAVIGATE_TO_EDIT_TOGGLE = 'SET_NAVIGATE_TO_EDIT_TOGGLE'
+const SET_EDITED_CAR_ID = 'SET_EDITED_CAR_ID'
+
 
 const initialState = {
     cars: [],
@@ -28,6 +31,10 @@ const initialState = {
         isEdit: false,
         isAdd: false
     },
+
+    navigateToEdit: false,
+
+    editedCarId: null
 }
 
 const carReducer = (state = initialState, action) => {
@@ -87,7 +94,7 @@ const carReducer = (state = initialState, action) => {
                 default:
                     return state;
             }
-        case RESET_INPUT:
+        case RESET_INPUTS:
             return {
                 ...state,
                 addCarInputInfo: {
@@ -120,6 +127,16 @@ const carReducer = (state = initialState, action) => {
                     isAdd: action.bool
                 }
             }
+        case SET_NAVIGATE_TO_EDIT_TOGGLE:
+            return {
+                ...state,
+                navigateToEdit: action.bool
+            }
+        case SET_EDITED_CAR_ID:
+            return {
+                ...state,
+                editedCarId: action.id
+            }
         default:
             return state
     }
@@ -137,8 +154,10 @@ export const updateAddCarInputValues = (inputName, newValue) => {
     }
 }
 
-export const resetInput = () => ({type: RESET_INPUT})
+export const resetInputs = () => ({type: RESET_INPUTS})
 export const setDeleteToggle = bool => ({type: SET_DELETE_TOGGLE, bool})
 export const setAddToggle = bool => ({type: SET_ADD_TOGGLE, bool})
+export const setNavigateToEditToggle = bool => ({type: SET_NAVIGATE_TO_EDIT_TOGGLE, bool})
+export const setIdEditedCar = id => ({type: SET_EDITED_CAR_ID, id})
 
 export default carReducer

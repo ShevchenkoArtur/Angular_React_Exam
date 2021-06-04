@@ -1,6 +1,7 @@
 import React from 'react'
 import ListCar from "./ListCar";
 import axios from "axios";
+import {Redirect} from "react-router-dom";
 
 class ListCarAPI extends React.Component {
 
@@ -33,6 +34,9 @@ class ListCarAPI extends React.Component {
                         deleteCar={this.onDeleteCar}
                         notificationFlags={this.props.notificationFlags}
                         setDeleteToogle={this.props.setDeleteToggle}
+                        navigateToEdit={this.props.navigateToEdit}
+                        setNavigateToEditToggle={this.props.setNavigateToEditToggle}
+                        setIdEditedCar={this.props.setIdEditedCar}
 
         />
     }

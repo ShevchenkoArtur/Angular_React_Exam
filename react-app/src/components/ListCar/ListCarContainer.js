@@ -1,12 +1,19 @@
 import {connect} from "react-redux";
 import ListCarAPI from "./ListCarAPI";
-import {deleteCar, getCars, setDeleteToggle} from "../../redux/reducers/carReducer";
+import {
+    deleteCar,
+    getCars,
+    setDeleteToggle,
+    setIdEditedCar,
+    setNavigateToEditToggle
+} from "../../redux/reducers/carReducer";
 
 const mapStateToProps = state => {
     return {
         cars: state.carsCRUD.cars,
         notificationFlags: state.carsCRUD.notificationFlags,
-        editIsOpen: state.carsCRUD.editIsOpen
+        editIsOpen: state.carsCRUD.editIsOpen,
+        navigateToEdit: state.carsCRUD.navigateToEdit
     }
 }
 
@@ -21,6 +28,12 @@ const mapDispatchToProps = dispatch => {
         },
         setDeleteToggle: bool => {
             dispatch(setDeleteToggle(bool))
+        },
+        setNavigateToEditToggle: bool => {
+            dispatch(setNavigateToEditToggle(bool))
+        },
+        setIdEditedCar: id => {
+            dispatch(setIdEditedCar(id))
         }
     }
 }

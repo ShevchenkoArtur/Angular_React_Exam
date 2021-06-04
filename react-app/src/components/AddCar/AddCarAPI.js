@@ -19,7 +19,7 @@ class AddCarAPI extends React.Component {
                 .catch(error => {
                     console.log(error)
                 })
-            this.props.resetInput()
+            this.props.resetInputs()
             this.props.setAddToggle(true)
         }
     }
