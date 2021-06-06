@@ -4,7 +4,6 @@ const Home = props => {
     return (
         <div>
             О проекте
-            <p></p>
         </div>
     )
 }
