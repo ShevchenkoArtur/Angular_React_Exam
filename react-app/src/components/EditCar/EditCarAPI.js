@@ -24,12 +24,8 @@ class EditCarAPI extends React.Component {
 
     render() {
         return (
-            <EditCar
-                     editedCarId={this.props.editedCarId}
-                     cars={this.props.cars}
-                     inputSettings={this.props.inputSettings}
-                     updateInputValues={this.props.updateInputValues}
-                     onEditCar={this.onEditCar}
+            <EditCar updateInputValues={this.props.updateInputValues}
+                     inputControl={this.props.inputControl}
             />
         )
     }

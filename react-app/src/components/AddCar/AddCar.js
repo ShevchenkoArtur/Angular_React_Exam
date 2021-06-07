@@ -6,13 +6,13 @@ const AddCar = props => {
 
     const addMessage = 'Машина была добавлена!'
 
-    const formSubmit = (e) => {
-        e.preventDefault()
+    const formSubmit = (event) => {
+        event.preventDefault()
         props.addCar()
     }
 
-    const onUpdateValue = (e) => {
-        props.updateInputValues(e.target.name, e.target.value)
+    const onUpdateValue = (event) => {
+        props.updateInputValues(event.target.name, event.target.value)
     }
 
     if (props.notificationFlags.isAdd) {
@@ -27,29 +27,29 @@ const AddCar = props => {
             }
             <label>Брэнд:
                 <input type="text"
-                       value={props.inputInfo.value.brand}
+                       value={props.inputControl.brandInput.value}
+                       name={props.inputControl.brandInput.name}
                        onChange={onUpdateValue}
-                       name={props.inputInfo.name.brand}
                 />
             </label>
             <label>Модель:
                 <input type="text"
-                       value={props.inputInfo.value.model}
-                       name={props.inputInfo.name.model}
+                       value={props.inputControl.modelInput.value}
+                       name={props.inputControl.modelInput.name}
                        onChange={onUpdateValue}
                 />
             </label>
             <label>Год выпуска:
                 <input type="number"
-                       value={props.inputInfo.value.year}
-                       name={props.inputInfo.name.year}
+                       value={props.inputControl.yearInput.value}
+                       name={props.inputControl.yearInput.name}
                        onChange={onUpdateValue}
                 />
             </label>
             <label>Цена:
                 <input type="number"
-                       value={props.inputInfo.value.price}
-                       name={props.inputInfo.name.price}
+                       value={props.inputControl.priceInput.value}
+                       name={props.inputControl.priceInput.name}
                        onChange={onUpdateValue}
                 />
             </label>

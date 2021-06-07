@@ -1,22 +1,17 @@
 import {connect} from "react-redux";
 import EditCarAPI from "./EditCarAPI";
-import {
-    updateAddCarInputValues
-} from "../../redux/reducers/carReducer";
-
+import {updateInputValues} from "../../redux/reducers/carReducer";
 
 const mapStateToProps = state => {
     return {
-        inputSettings: state.carsCRUD.addCarInputInfo,
-        editedCarId: state.carsCRUD.editedCarId,
-        cars: state.carsCRUD.cars
+        inputControl: state.carsCRUD.inputControl
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         updateInputValues: (inputName, newValue) => {
-            dispatch(updateAddCarInputValues(inputName, newValue))
+            dispatch(updateInputValues(inputName, newValue))
         }
     }
 }

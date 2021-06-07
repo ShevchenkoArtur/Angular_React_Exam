@@ -26,40 +26,50 @@ const ListCar = props => {
 
 
     return (
-        <ul className={style.list}>
+        <>
             {
                 props.notificationFlags.isDelete ? <Notification message={deleteMessage}/> : ''
             }
-            {
-                props.cars.length === 0 ? <div>Раздел пуст!</div> :
+            <table>
+                <thead>
+                <tr>
+                    <td>id</td>
+                    <td>Brand</td>
+                    <td>Model</td>
+                    <td>Year</td>
+                    <td>Price</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                {
                     props.cars.map(car => {
-                            return (
-                                <li className={style.item} key={car.id}>
-                                    <div className={style.info}>
-                                        <p><strong>{car.brand} {car.model}</strong></p>
-                                        <p>Цена: {car.price}</p>
-                                        <p>Год выпуска: {car.year}</p>
-                                    </div>
-
-                                    <div className={style.action}>
-                                        <NavLink to='/edit-car'>
-                                            edit
-                                            {/*onClick={() => onEditCar(car.id)}*/}
-                                            {/*<button >*/}
-                                            {/*    <img src={editIcon} alt="Edit" title="Edit"/>*/}
-                                            {/*</button>*/}
-                                        </NavLink>
-
-                                        <button onClick={() => onDeleteCar(car.id)}>
-                                            <img src={deleteIcon} alt="Delete" title="Delete"/>
-                                        </button>
-                                    </div>
-                                </li>
-                            )
-                        }
-                    )
-            }
-        </ul>
+                        return (
+                            <tr key={car.id}>
+                                <td>{car.id}</td>
+                                <td>{car.brand}</td>
+                                <td>{car.model}</td>
+                                <td>{car.year}</td>
+                                <td>{car.price}</td>
+                                <td>
+                                    <NavLink to='edit-car'>
+                                        <img src={editIcon} alt="Edit"/>
+                                    </NavLink>
+                                </td>
+                                <td>
+                                    <img onClick={() => onDeleteCar(car.id)}
+                                         src={deleteIcon}
+                                         alt="Delete"
+                                    />
+                                </td>
+                            </tr>
+                        )
+                    })
+                }
+                </tbody>
+            </table>
+        </>
     )
 }
 

@@ -6,40 +6,40 @@ const EditCar = props => {
 
     // const editedCar =
 
-    const formSubmit = (e) => {
-        e.preventDefault()
+    const formSubmit = (event) => {
+        event.preventDefault()
     }
 
-    const onUpdateValue = (e) => props.updateInputValues(e.target.name, e.target.value)
+    const onUpdateValue = (event) => props.updateInputValues(event.target.name, event.target.value)
 
 
     return (
         <form onSubmit={formSubmit} className={style.form}>
             <label>Брэнд:
                 <input type="text"
-                    // placeholder={props.cars.filter(car => car.id === props.editedCarId)[0].brand}
-                       name={props.inputSettings.name.brand}
+                       value={props.inputControl.brandInput.value}
+                       name={props.inputControl.brandInput.name}
                        onChange={onUpdateValue}
                 />
             </label>
             <label>Модель:
                 <input type="text"
-                    // placeholder={props.cars.filter(car => car.id === props.editedCarId)[0].model}
-                       name={props.inputSettings.name.model}
+                       value={props.inputControl.modelInput.value}
+                       name={props.inputControl.modelInput.name}
                        onChange={onUpdateValue}
                 />
             </label>
             <label>Год выпуска:
                 <input type="number"
-                    // placeholder={props.cars.filter(car => car.id === props.editedCarId)[0].year}
-                       name={props.inputSettings.name.year}
+                       value={props.inputControl.yearInput.value}
+                       name={props.inputControl.yearInput.name}
                        onChange={onUpdateValue}
                 />
             </label>
             <label>Цена:
                 <input type="number"
-                    // placeholder={props.cars.filter(car => car.id === props.editedCarId)[0].price}
-                       name={props.inputSettings.name.price}
+                       value={props.inputControl.priceInput.value}
+                       name={props.inputControl.priceInput.name}
                        onChange={onUpdateValue}
                 />
             </label>
@@ -48,7 +48,6 @@ const EditCar = props => {
                 <button type="button">
                     Назад к списку
                 </button>
-
 
                 <button onClick={props.onEditCar} type="submit">
                     Редактировать
