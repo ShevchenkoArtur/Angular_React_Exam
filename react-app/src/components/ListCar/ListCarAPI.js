@@ -25,17 +25,17 @@ class ListCarAPI extends React.Component {
                 console.log(error);
             })
         this.props.deleteCar(id)
-        this.props.setDeleteToggle(true)
+        this.props.setDeleteNotificationToggle(true)
     }
 
     render() {
         return <ListCar cars={this.props.cars}
                         deleteCar={this.onDeleteCar}
                         notificationFlags={this.props.notificationFlags}
-                        setDeleteToogle={this.props.setDeleteToggle}
+                        setDeleteNotificationToggle={this.props.setDeleteNotificationToggle}
                         navigateToEdit={this.props.navigateToEdit}
                         setNavigateToEditToggle={this.props.setNavigateToEditToggle}
-                        setIdEditedCar={this.props.setIdEditedCar}
+                        setEditedCarId={this.props.setEditedCarId}
 
         />
     }

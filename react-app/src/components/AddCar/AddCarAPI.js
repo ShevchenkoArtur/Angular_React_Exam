@@ -36,7 +36,7 @@ class AddCarAPI extends React.Component {
                        inputControl={this.props.inputControl}
                        updateInputValues={this.props.updateInputValues}
                        notificationFlags={this.props.notificationFlags}
-                       setAddToggle={this.props.setAddToggle}
+                       setAddNotificationToggle={this.props.setAddNotificationToggle}
         />
     }
 }

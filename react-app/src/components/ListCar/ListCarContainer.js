@@ -3,8 +3,8 @@ import ListCarAPI from "./ListCarAPI";
 import {
     deleteCar,
     getCars,
-    setDeleteToggle,
-    setIdEditedCar
+    setDeleteNotificationToggle,
+    setEditedCarId
 } from "../../redux/reducers/carReducer";
 
 const mapStateToProps = state => {
@@ -23,11 +23,11 @@ const mapDispatchToProps = dispatch => {
         deleteCar: id => {
             dispatch(deleteCar(id))
         },
-        setDeleteToggle: bool => {
-            dispatch(setDeleteToggle(bool))
+        setDeleteNotificationToggle: bool => {
+            dispatch(setDeleteNotificationToggle(bool))
         },
-        setIdEditedCar: id => {
-            dispatch(setIdEditedCar(id))
+        setEditedCarId: id => {
+            dispatch(setEditedCarId(id))
         }
     }
 }

@@ -10,22 +10,27 @@ class EditCarAPI extends React.Component {
     }
 
     onEditCar() {
-
         let data = this.props.cars.filter(car => car.id === this.props.editedCarId)[0]
 
         axios.put(`http://localhost:8080/api/cars/${this.props.editedCarId}`, data)
-            .then(response => {
-                console.log(response)
-            })
             .catch(error => {
                 console.log(error);
             })
+
+        this.props.resetInputs()
+        this.props.setEditNotificationToggle(true)
     }
 
     render() {
         return (
-            <EditCar updateInputValues={this.props.updateInputValues}
+            <EditCar onEditCar={this.onEditCar}
+                     updateInputValues={this.props.updateInputValues}
                      inputControl={this.props.inputControl}
+                     cars={this.props.cars}
+                     editedCarId={this.props.editedCarId}
+                     updateEditedCarInputValues={this.props.updateEditedCarInputValues}
+                     notificationFlags={this.props.notificationFlags}
+                     setEditNotificationToggle={this.props.setEditNotificationToggle}
             />
         )
     }

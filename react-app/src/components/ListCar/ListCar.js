@@ -1,10 +1,8 @@
 import React from 'react'
-import style from './ListCar.module.css'
 import deleteIcon from '../../assets/images/icons/deleteIcon.svg'
 import editIcon from '../../assets/images/icons/editIcon.svg'
 import Notification from "../Notification/Notification";
-import {Link, NavLink, Redirect} from "react-router-dom";
-
+import {NavLink} from "react-router-dom";
 
 const ListCar = props => {
 
@@ -12,7 +10,7 @@ const ListCar = props => {
 
     if (props.notificationFlags.isDelete) {
         setTimeout(() => {
-            props.setDeleteToogle(false)
+            props.setDeleteNotificationToggle(false)
         }, 2000)
     }
 
@@ -21,7 +19,7 @@ const ListCar = props => {
     }
 
     const onEditCar = id => {
-        props.setIdEditedCar(id)
+        props.setEditedCarId(id)
     }
 
 
@@ -54,8 +52,9 @@ const ListCar = props => {
                                 <td>{car.price}</td>
                                 <td>
                                     <NavLink to='edit-car'>
-                                        <img src={editIcon} alt="Edit"/>
+                                    <img onClick={() => onEditCar(car.id)} src={editIcon} alt="Edit"/>
                                     </NavLink>
+
                                 </td>
                                 <td>
                                     <img onClick={() => onDeleteCar(car.id)}

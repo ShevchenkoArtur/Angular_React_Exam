@@ -1,59 +1,72 @@
 import React from 'react'
 import style from "../AddCar/form.module.css";
-import {Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import Notification from "../Notification/Notification";
 
 const EditCar = props => {
 
-    // const editedCar =
+    const editNotificationMessage = 'Машина была изменена!'
+
+    if (props.notificationFlags.isEdit) {
+        setTimeout(() => {
+            props.setEditNotificationToggle(false)
+        }, 2000)
+    }
 
     const formSubmit = (event) => {
         event.preventDefault()
+        props.onEditCar()
     }
 
-    const onUpdateValue = (event) => props.updateInputValues(event.target.name, event.target.value)
+    const onUpdateValue = (event) => props.updateEditedCarInputValues(event.target.name, event.target.value)
 
 
     return (
-        <form onSubmit={formSubmit} className={style.form}>
-            <label>Брэнд:
-                <input type="text"
-                       value={props.inputControl.brandInput.value}
-                       name={props.inputControl.brandInput.name}
-                       onChange={onUpdateValue}
-                />
-            </label>
-            <label>Модель:
-                <input type="text"
-                       value={props.inputControl.modelInput.value}
-                       name={props.inputControl.modelInput.name}
-                       onChange={onUpdateValue}
-                />
-            </label>
-            <label>Год выпуска:
-                <input type="number"
-                       value={props.inputControl.yearInput.value}
-                       name={props.inputControl.yearInput.name}
-                       onChange={onUpdateValue}
-                />
-            </label>
-            <label>Цена:
-                <input type="number"
-                       value={props.inputControl.priceInput.value}
-                       name={props.inputControl.priceInput.name}
-                       onChange={onUpdateValue}
-                />
-            </label>
-            <div className={style.action}>
-
-                <button type="button">
-                    Назад к списку
-                </button>
-
-                <button onClick={props.onEditCar} type="submit">
-                    Редактировать
-                </button>
-            </div>
-        </form>
+        <>
+            {
+                props.notificationFlags.isEdit ? <Notification message={editNotificationMessage}/> : ''
+            }
+            <form onSubmit={formSubmit} className={style.form}>
+                <label>Брэнд:
+                    <input type="text"
+                           value={props.cars.filter(car => car.id === props.editedCarId)[0].brand}
+                           name={props.inputControl.brandInput.name}
+                           onChange={onUpdateValue}
+                    />
+                </label>
+                <label>Модель:
+                    <input type="text"
+                           value={props.cars.filter(car => car.id === props.editedCarId)[0].model}
+                           name={props.inputControl.modelInput.name}
+                           onChange={onUpdateValue}
+                    />
+                </label>
+                <label>Год выпуска:
+                    <input type="number"
+                           value={props.cars.filter(car => car.id === props.editedCarId)[0].year}
+                           name={props.inputControl.yearInput.name}
+                           onChange={onUpdateValue}
+                    />
+                </label>
+                <label>Цена:
+                    <input type="number"
+                           value={props.cars.filter(car => car.id === props.editedCarId)[0].price}
+                           name={props.inputControl.priceInput.name}
+                           onChange={onUpdateValue}
+                    />
+                </label>
+                <div className={style.action}>
+                    <NavLink to='/list-car'>
+                        <button type="button">
+                            Назад к списку
+                        </button>
+                    </NavLink>
+                    <button type="submit">
+                        Редактировать
+                    </button>
+                </div>
+            </form>
+        </>
     )
 }
 

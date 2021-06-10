@@ -1,9 +1,11 @@
 const DELETE_CAR = 'DELETE_CAR'
 const GET_CARS = 'GET_CARS'
 const UPDATE_INPUT_VALUES = 'UPDATE_INPUT_VALUES'
+const UPDATE_EDITED_CAR_INPUT_VALUES = 'UPDATE_EDITED_CAR_INPUT_VALUES'
 const RESET_INPUTS = 'RESET_INPUTS'
-const SET_DELETE_TOGGLE = 'SET_DELETE_TOGGLE'
-const SET_ADD_TOGGLE = 'SET_ADD_TOGGLE'
+const SET_DELETE_NOTIFICATION_TOGGLE = 'SET_DELETE_NOTIFICATION_TOGGLE'
+const SET_ADD_NOTIFICATION_TOGGLE = 'SET_ADD_NOTIFICATION_TOGGLE'
+const SET_EDIT_NOTIFICATION_TOGGLE = 'SET_EDIT_NOTIFICATION_TOGGLE'
 const SET_EDITED_CAR_ID = 'SET_EDITED_CAR_ID'
 
 
@@ -33,7 +35,9 @@ const initialState = {
         isDelete: false,
         isEdit: false,
         isAdd: false
-    }
+    },
+
+    editedCarId: null
 }
 
 const carReducer = (state = initialState, action) => {
@@ -98,7 +102,51 @@ const carReducer = (state = initialState, action) => {
                 default:
                     return state;
             }
-
+        case UPDATE_EDITED_CAR_INPUT_VALUES:
+            switch (action.inputName) {
+                case state.inputControl.brandInput.name:
+                    return {
+                        ...state,
+                        cars: state.cars.filter(car => car.id === state.editedCarId).map(car => {
+                            return {
+                                ...car,
+                                brand: action.newValue
+                            }
+                        })
+                    }
+                case state.inputControl.modelInput.name:
+                    return {
+                        ...state,
+                        cars: state.cars.filter(car => car.id === state.editedCarId).map(car => {
+                            return {
+                                ...car,
+                                model: action.newValue
+                            }
+                        })
+                    }
+                case state.inputControl.yearInput.name:
+                    return {
+                        ...state,
+                        cars: state.cars.filter(car => car.id === state.editedCarId).map(car => {
+                            return {
+                                ...car,
+                                year: action.newValue
+                            }
+                        })
+                    }
+                case state.inputControl.priceInput.name:
+                    return {
+                        ...state,
+                        cars: state.cars.filter(car => car.id === state.editedCarId).map(car => {
+                            return {
+                                ...car,
+                                price: action.newValue
+                            }
+                        })
+                    }
+                default:
+                    return state
+            }
         case RESET_INPUTS:
             return {
                 ...state,
@@ -120,21 +168,28 @@ const carReducer = (state = initialState, action) => {
                         ...state.inputControl.priceInput,
                         value: ''
                     }
-                }
+                },
+                cars: state.cars.filter(car => car.id === state.editedCarId)
             }
-
-        case SET_DELETE_TOGGLE:
+        case SET_DELETE_NOTIFICATION_TOGGLE:
             return {
                 ...state,
                 notificationFlags: {
                     isDelete: action.bool
                 }
             }
-        case SET_ADD_TOGGLE:
+        case SET_ADD_NOTIFICATION_TOGGLE:
             return {
                 ...state,
                 notificationFlags: {
                     isAdd: action.bool
+                }
+            }
+        case SET_EDIT_NOTIFICATION_TOGGLE:
+            return {
+                ...state,
+                notificationFlags: {
+                    isEdit: action.bool
                 }
             }
         case SET_EDITED_CAR_ID:
@@ -148,15 +203,17 @@ const carReducer = (state = initialState, action) => {
 }
 
 export const getCars = cars => ({type: GET_CARS, cars})
-
 export const deleteCar = id => ({type: DELETE_CAR, id})
-
-export const updateInputValues = (inputName, newValue) => ({type: UPDATE_INPUT_VALUES, inputName, newValue})
-
+export const updateInputValues = (inputName, newValue) => {
+    return {type: UPDATE_INPUT_VALUES, inputName, newValue}
+}
+export const updateEditedCarInputValues = (inputName, newValue) => {
+    return {type: UPDATE_EDITED_CAR_INPUT_VALUES, inputName, newValue}
+}
 export const resetInputs = () => ({type: RESET_INPUTS})
-export const setDeleteToggle = bool => ({type: SET_DELETE_TOGGLE, bool})
-export const setAddToggle = bool => ({type: SET_ADD_TOGGLE, bool})
-export const setIdEditedCar = id => ({type: SET_EDITED_CAR_ID, id})
-
+export const setDeleteNotificationToggle = bool => ({type: SET_DELETE_NOTIFICATION_TOGGLE, bool})
+export const setAddNotificationToggle = bool => ({type: SET_ADD_NOTIFICATION_TOGGLE, bool})
+export const setEditNotificationToggle = bool => ({type: SET_EDIT_NOTIFICATION_TOGGLE, bool})
+export const setEditedCarId = id => ({type: SET_EDITED_CAR_ID, id})
 
 export default carReducer

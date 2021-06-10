@@ -4,7 +4,7 @@ import Notification from "../Notification/Notification";
 
 const AddCar = props => {
 
-    const addMessage = 'Машина была добавлена!'
+    const addNotificationMessage = 'Машина была добавлена!'
 
     const formSubmit = (event) => {
         event.preventDefault()
@@ -17,13 +17,13 @@ const AddCar = props => {
 
     if (props.notificationFlags.isAdd) {
         setTimeout(() => {
-            props.setAddToggle(false)
+            props.setAddNotificationToggle(false)
         }, 2000)
     }
     return (
         <form onSubmit={formSubmit} className={style.form}>
             {
-                props.notificationFlags.isAdd ? <Notification message={addMessage}/> : ''
+                props.notificationFlags.isAdd ? <Notification message={addNotificationMessage}/> : ''
             }
             <label>Брэнд:
                 <input type="text"
