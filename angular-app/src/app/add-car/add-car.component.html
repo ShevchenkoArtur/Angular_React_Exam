@@ -1,0 +1,19 @@
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <label>Бренд:
+    <input formControlName="brand" type="text" name="brand"/>
+  </label>
+  <label>Модель:
+    <input formControlName="model" type="text" name="model"/>
+  </label>
+  <label>Год выпуска:
+    <input formControlName="year" type="number" name="year"/>
+  </label>
+  <label>Цена:
+    <input formControlName="price" type="number" name="price"/>
+  </label>
+  <div class="action">
+    <button type="submit">
+      Добавить
+    </button>
+  </div>
+</form>

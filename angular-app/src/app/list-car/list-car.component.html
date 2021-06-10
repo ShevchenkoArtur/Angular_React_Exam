@@ -1,0 +1,29 @@
+<table>
+  <thead>
+  <tr>
+    <td>id</td>
+    <td>Бренд</td>
+    <td>Модель</td>
+    <td>Цена</td>
+    <td>Год Выпуска</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let car of cars">
+    <td>{{car.id}}</td>
+    <td>{{car.brand}}</td>
+    <td>{{car.model}}</td>
+    <td>{{car.price}}</td>
+    <td>{{car.year}}</td>
+    <td><img src='./assets/icons/editIcon.svg' alt="Edit" title="Edit"/></td>
+    <td>
+      <img (click)="deleteCar(car.id)"
+           src='./assets/icons/deleteIcon.svg'
+           alt="Delete"
+           title="Delete"/>
+    </td>
+  </tr>
+  </tbody>
+</table>

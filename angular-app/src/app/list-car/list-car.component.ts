@@ -10,11 +10,11 @@ export interface Car {
 }
 
 @Component({
-  selector: 'app-listcar',
-  templateUrl: './listcar.component.html',
-  styleUrls: ['./listcar.component.css']
+  selector: 'app-list-car',
+  templateUrl: './list-car.component.html',
+  styleUrls: ['./list-car.component.css']
 })
-export class ListcarComponent implements OnInit {
+export class ListCarComponent implements OnInit {
 
   constructor(public httpClient: HttpClient) {
   }
@@ -33,7 +33,6 @@ export class ListcarComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get<Car[]>('http://localhost:8080/api/cars').subscribe(cars => {
       this.cars = cars
-      console.log(cars)
     })
   }
 

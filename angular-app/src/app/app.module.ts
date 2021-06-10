@@ -6,10 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
-import { ListcarComponent } from './listcar/listcar.component';
-import { AddcarComponent } from './addcar/addcar.component';
+import { ListCarComponent } from './list-car/list-car.component';
+import { AddCarComponent } from './add-car/add-car.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,15 +17,16 @@ import {FormsModule} from "@angular/forms";
     AppComponent,
     HeaderComponent,
     AboutComponent,
-    ListcarComponent,
-    AddcarComponent,
+    ListCarComponent,
+    AddCarComponent,
     HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
