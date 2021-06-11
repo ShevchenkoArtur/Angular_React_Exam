@@ -21,7 +21,7 @@
       <img (click)="onEdit(car.id)" src='./assets/icons/editIcon.svg' alt="Edit" title="Edit"/>
     </td>
     <td>
-      <img (click)="carsApi.deleteCar(car.id)"
+      <img (click)="onDelete(car.id)"
            src='./assets/icons/deleteIcon.svg'
            alt="Delete"
            title="Delete"/>
@@ -29,3 +29,7 @@
   </tr>
   </tbody>
 </table>
+
+<app-notification *ngIf="notification.notificationFlags.isDelete"
+                  [message]="notificationMessage">
+</app-notification>

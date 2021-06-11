@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {CarsApiService} from "../cars-api.service";
+import {Component, OnInit} from '@angular/core';
+import {CarsApiService} from "../services/cars-api.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {NotificationService} from "../services/notification.service";
 
 @Component({
   selector: 'app-edit-car',
@@ -11,7 +12,13 @@ import {Router} from "@angular/router";
 
 export class EditCarComponent implements OnInit {
 
-  constructor(public carsApi: CarsApiService, public router: Router) { }
+  constructor(public carsApi: CarsApiService,
+              public router: Router,
+              public notification: NotificationService
+  ) {
+  }
+
+  notificationMessage: string = 'Машина была обновлена!'
 
   form!: FormGroup
 
@@ -37,6 +44,13 @@ export class EditCarComponent implements OnInit {
 
   updateCar() {
     this.carsApi.updateCar(this.carsApi.editedCarId, this.form.value)
-  }
 
+    this.notification.setEditNotificationToggle(true)
+
+    if (this.notification.notificationFlags.isEdit) {
+      setTimeout(() => {
+        this.notification.setEditNotificationToggle(false)
+      }, 2000)
+    }
+  }
 }

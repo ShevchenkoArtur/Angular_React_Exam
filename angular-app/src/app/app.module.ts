@@ -11,6 +11,7 @@ import { AddCarComponent } from './add-car/add-car.component';
 import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditCarComponent} from "./edit-car/edit-car.component";
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {EditCarComponent} from "./edit-car/edit-car.component";
     ListCarComponent,
     AddCarComponent,
     HomeComponent,
-    EditCarComponent
+    EditCarComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

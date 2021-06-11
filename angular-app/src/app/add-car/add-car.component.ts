@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-import {CarsApiService} from "../cars-api.service";
+import {CarsApiService} from "../services/cars-api.service";
+import {NotificationService} from "../services/notification.service";
 
 @Component({
   selector: 'app-add-car',
@@ -10,8 +11,12 @@ import {CarsApiService} from "../cars-api.service";
 })
 export class AddCarComponent implements OnInit {
 
-  constructor(public httpClient: HttpClient, public carsApi: CarsApiService) {
-  }
+  constructor(public httpClient: HttpClient,
+              public carsApi: CarsApiService,
+              public notification: NotificationService
+  ) {}
+
+  notificationMessage: string = 'Машина была добавлена!'
 
   form!: FormGroup
 
@@ -27,5 +32,12 @@ export class AddCarComponent implements OnInit {
   submit() {
     this.carsApi.addCar(this.form.value)
     this.form.reset()
+    this.notification.setAddNotificationToggle(true)
+
+    if(this.notification.notificationFlags.isAdd) {
+      setTimeout(() => {
+        this.notification.setAddNotificationToggle(false)
+      }, 2000)
+    }
   }
 }

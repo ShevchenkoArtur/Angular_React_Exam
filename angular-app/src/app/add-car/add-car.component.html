@@ -17,3 +17,7 @@
     </button>
   </div>
 </form>
+
+<app-notification *ngIf="notification.notificationFlags.isAdd"
+                  [message]="notificationMessage">
+</app-notification>

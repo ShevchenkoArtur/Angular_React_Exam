@@ -20,3 +20,8 @@
     </button>
   </div>
 </form>
+
+<app-notification *ngIf="notification.notificationFlags.isEdit"
+                  [message]="notificationMessage"
+>
+</app-notification>
