@@ -1,0 +1,22 @@
+<form class="form" [formGroup]="form">
+  <label>Бренд:
+    <input formControlName="brand" type="text" name="editBrand"/>
+  </label>
+  <label>Модель:
+    <input formControlName="model" type="text" name="editModel"/>
+  </label>
+  <label>Год выпуска:
+    <input formControlName="year" type="number" name="editYear"/>
+  </label>
+  <label>Цена:
+    <input formControlName="price" type="number" name="editPrice"/>
+  </label>
+  <div class="action">
+    <button (click)="navigateToListCar()" type="button">
+      Назад к списку
+    </button>
+    <button (click)="updateCar()" type="submit">
+      Редактировать
+    </button>
+  </div>
+</form>

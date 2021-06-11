@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {CarsApiService} from "../cars-api.service";
 
 @Component({
   selector: 'app-add-car',
@@ -9,7 +10,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 })
 export class AddCarComponent implements OnInit {
 
-  constructor(public httpClient: HttpClient) {
+  constructor(public httpClient: HttpClient, public carsApi: CarsApiService) {
   }
 
   form!: FormGroup
@@ -24,22 +25,7 @@ export class AddCarComponent implements OnInit {
   }
 
   submit() {
-    this.httpClient.post('http://localhost:8080/api/cars', this.form.value).subscribe(data => {
-      console.log('success')
-    }, error => {
-      console.log('failed')
-    })
+    this.carsApi.addCar(this.form.value)
+    this.form.reset()
   }
-
-  // addCar() {
-  //   this.httpClient.post('http://localhost:8080/api/cars', this.inputs).subscribe(data => {
-  //     console.log('success')
-  //   }, error => {
-  //     console.log('failed')
-  //   })
-  //   this.inputs.brand = ''
-  //   this.inputs.model = ''
-  //   this.inputs.price = ''
-  //   this.inputs.year = ''
-  // }
 }

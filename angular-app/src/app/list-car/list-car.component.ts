@@ -1,39 +1,26 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-
-export interface Car {
-  id: number,
-  brand: string,
-  model: string,
-  year: number,
-  price: number
-}
+import {CarsApiService} from "../cars-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-car',
   templateUrl: './list-car.component.html',
   styleUrls: ['./list-car.component.css']
 })
+
 export class ListCarComponent implements OnInit {
 
-  constructor(public httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, public carsApi: CarsApiService, private router: Router) {
   }
 
-  cars: Car[] = []
-
-  deleteCar(id: any) {
-    this.httpClient.delete(`http://localhost:8080/api/cars/${id}`).subscribe(data => {
-      console.log('success')
-    }, error => {
-      console.log('failed')
-    })
-    this.cars = this.cars.filter(car => car.id !== id)
+  onEdit(id: number) {
+    this.router.navigate(['/edit-car'])
+    this.carsApi.editedCarId = id
   }
 
   ngOnInit(): void {
-    this.httpClient.get<Car[]>('http://localhost:8080/api/cars').subscribe(cars => {
-      this.cars = cars
-    })
+    this.carsApi.getCars()
   }
 
 }

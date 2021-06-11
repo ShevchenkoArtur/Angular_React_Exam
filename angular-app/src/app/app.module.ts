@@ -10,6 +10,7 @@ import { ListCarComponent } from './list-car/list-car.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {EditCarComponent} from "./edit-car/edit-car.component";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AboutComponent,
     ListCarComponent,
     AddCarComponent,
-    HomeComponent
+    HomeComponent,
+    EditCarComponent
   ],
   imports: [
     BrowserModule,

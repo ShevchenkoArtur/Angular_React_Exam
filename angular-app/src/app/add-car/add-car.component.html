@@ -1,15 +1,15 @@
 <form class="form" [formGroup]="form" (ngSubmit)="submit()">
   <label>Бренд:
-    <input formControlName="brand" type="text" name="brand"/>
+    <input formControlName="brand" type="text" name="addBrand"/>
   </label>
   <label>Модель:
-    <input formControlName="model" type="text" name="model"/>
+    <input formControlName="model" type="text" name="addModel"/>
   </label>
   <label>Год выпуска:
-    <input formControlName="year" type="number" name="year"/>
+    <input formControlName="year" type="number" name="addYear"/>
   </label>
   <label>Цена:
-    <input formControlName="price" type="number" name="price"/>
+    <input formControlName="price" type="number" name="addPrice"/>
   </label>
   <div class="action">
     <button type="submit">

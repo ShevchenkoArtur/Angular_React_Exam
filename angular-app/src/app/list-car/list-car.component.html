@@ -11,15 +11,17 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let car of cars">
+  <tr *ngFor="let car of carsApi.cars">
     <td>{{car.id}}</td>
     <td>{{car.brand}}</td>
     <td>{{car.model}}</td>
     <td>{{car.price}}</td>
     <td>{{car.year}}</td>
-    <td><img src='./assets/icons/editIcon.svg' alt="Edit" title="Edit"/></td>
     <td>
-      <img (click)="deleteCar(car.id)"
+      <img (click)="onEdit(car.id)" src='./assets/icons/editIcon.svg' alt="Edit" title="Edit"/>
+    </td>
+    <td>
+      <img (click)="carsApi.deleteCar(car.id)"
            src='./assets/icons/deleteIcon.svg'
            alt="Delete"
            title="Delete"/>
