@@ -1,6 +1,6 @@
 import React from 'react'
-import style from './form.module.css'
 import Notification from "../Notification/Notification";
+import {NavLink} from "react-router-dom";
 
 const AddCar = props => {
 
@@ -21,7 +21,7 @@ const AddCar = props => {
         }, 2000)
     }
     return (
-        <form onSubmit={formSubmit} className={style.form}>
+        <form onSubmit={formSubmit} className='form'>
             {
                 props.notificationFlags.isAdd ? <Notification message={addNotificationMessage}/> : ''
             }
@@ -53,8 +53,13 @@ const AddCar = props => {
                        onChange={onUpdateValue}
                 />
             </label>
-            <div className={style.action}>
-                <button type="submit">
+            <div className='action'>
+                <NavLink to='/list-car'>
+                    <button type="button" className='button button-secondary'>
+                        Назад к списку
+                    </button>
+                </NavLink>
+                <button type="submit" className='button button-success'>
                     Добавить
                 </button>
             </div>

@@ -12,10 +12,16 @@
     <input formControlName="price" type="number" name="editPrice"/>
   </label>
   <div class="action">
-    <button (click)="navigateToListCar()" type="button">
+    <button (click)="navigateToListCar()"
+            type="button"
+            class="button button-secondary"
+    >
       Назад к списку
     </button>
-    <button (click)="updateCar()" type="submit">
+    <button (click)="updateCar()"
+            type="submit"
+            class="button button-success"
+    >
       Редактировать
     </button>
   </div>

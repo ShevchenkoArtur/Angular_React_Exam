@@ -1,5 +1,4 @@
 import React from 'react'
-import style from "../AddCar/form.module.css";
 import {NavLink} from "react-router-dom";
 import Notification from "../Notification/Notification";
 
@@ -26,7 +25,7 @@ const EditCar = props => {
             {
                 props.notificationFlags.isEdit ? <Notification message={editNotificationMessage}/> : ''
             }
-            <form onSubmit={formSubmit} className={style.form}>
+            <form onSubmit={formSubmit} className='form'>
                 <label>Брэнд:
                     <input type="text"
                            value={props.cars.filter(car => car.id === props.editedCarId)[0].brand}
@@ -55,13 +54,14 @@ const EditCar = props => {
                            onChange={onUpdateValue}
                     />
                 </label>
-                <div className={style.action}>
+                <div className='action'>
                     <NavLink to='/list-car'>
-                        <button type="button">
+                        <button type="button" className='button button-secondary'>
                             Назад к списку
                         </button>
                     </NavLink>
-                    <button type="submit">
+
+                    <button type="submit" className='button button-success'>
                         Редактировать
                     </button>
                 </div>

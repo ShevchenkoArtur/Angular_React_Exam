@@ -15,6 +15,7 @@ body {
 /*table styles*/
 table {
   width: 100%;
+  margin: 32px auto;
   text-align: center;
   border-collapse: collapse;
 }
@@ -46,11 +47,11 @@ td img:hover {
 /*form styles*/
 
 .form {
+  margin: 32px auto;
   border: 1px solid #eee;
   padding: 16px;
   min-width: 360px;
   max-width: 600px;
-  margin: 0 auto;
   border-radius: 3px;
 }
 
@@ -70,18 +71,43 @@ td img:hover {
 }
 
 .action {
-  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0 0 0;
 }
 
-.action button {
-  width: 100%;
+
+/*button styles*/
+.button {
+  width: 50%;
+  margin: 0 8px 0 0;
   padding: 8px 16px;
-  background-color: #0ea10e;
-  border: 0;
-  color: #fff;
+  transition: 200ms;
+  background-color: inherit;
+  font-weight: bold;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
-.action button:hover {
-  background-color: #0e860e;
+.button-success {
+  border: 3px solid #0ea10e;
+  border-radius: 3px;
+  color: #000;
 }
+
+.button-success:hover {
+  background-color: #0ea10e;
+  color: #fff;
+}
+
+.button-secondary {
+  border: 3px solid #404040;
+  border-radius: 3px;
+  color: #000;
+}
+
+.button-secondary:hover {
+  background-color: #404040;
+  color: #fff;
+}
+

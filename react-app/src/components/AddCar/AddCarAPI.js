@@ -27,7 +27,7 @@ class AddCarAPI extends React.Component {
                 })
 
             this.props.resetInputs()
-            this.props.setAddToggle(true)
+            this.props.setAddNotificationToggle(true)
         }
     }
 

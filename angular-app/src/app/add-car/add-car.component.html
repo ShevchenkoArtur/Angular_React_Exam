@@ -12,7 +12,13 @@
     <input formControlName="price" type="number" name="addPrice"/>
   </label>
   <div class="action">
-    <button type="submit">
+    <button (click)="navigateToListCar()"
+      type="button"
+            class="button button-secondary"
+    >
+      Назад к списку
+    </button>
+    <button type="submit" class="button button-success">
       Добавить
     </button>
   </div>

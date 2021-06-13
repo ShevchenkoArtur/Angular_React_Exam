@@ -4,7 +4,7 @@ import studentPhoto from '../../assets/images/studentPhoto.jpg'
 
 const About = props => {
     return (
-        <div className={style.aboutBlock}>
+        <div className={style.about}>
             <div className={style.image}>
                 <img src={studentPhoto} alt="img"/>
             </div>
