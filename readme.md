@@ -10,7 +10,7 @@ npm install
 node server.js
 ```
 
-### Run React
+### Run React / Angular
 ```
 npm start
 ```
